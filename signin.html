@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/image.png">
+    <title>Cadastro | Pastelaria Central</title>
+    <link rel="icon" href="img/logo.png">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <!-- Header da Pagina -->
+
+    <header class="header">
+
+        <img src="img/logo.png" alt="" class="imageLogo" onclick="location.href='index.html'">
+        
+        <div class="searchBar">
+            <input type="text" placeholder="Busque o que está procurando..." class="searchBarField">
+                
+            <img onclick="location.href='#'" src="img/lupa.png" alt="Lupa" class="imageLupe">                
+        </div>
+
+        <div class="headerList">            
+            <img src="img/black cart icon.png" alt="black cart icon" onclick="location.href='#'">
+            
+            <img src="img/WishList icon.png" alt="WishList icon" onclick="location.href='#'">
+                
+            <img src="img/black user icon.png" alt="User icon" onclick="location.href='login.html'">            
+        </div>
+
+    </header>
+
+    <nav class="headerNav">
+        <a href="cardapio.html">Cardápio</a>
+        <a href="#">Novidades</a>
+        <a href="#">Contato</a>
+    </nav>
+
+    <!-- Conteúdo da página -->
+
+    <main>
+
+        <div class="mainPageContent"></div>
+
+        <div class="signinMain">
+            <div class="signinContent">
+                <h2>Criar conta</h2>
+                <p>Preencha os dados abaixo para se cadastrar</p>
+
+                    <div class="signinSocial">
+                        <button class="signinGoogle">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google">
+                        </button>
+
+                        <button class="signinFacebook">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" alt="Facebook">
+                        </button>
+                    </div>
+
+                    <div class="divider"><span>OU</span></div>
+
+                    <form action="">
+
+                        <label for="text">Nome completo</label>
+                        <input type="text" id="fullName" placeholder="Nome completo" required>
+                        <label for="email">Email</label>
+                        <input type="email" placeholder="Email" required>
+
+                        <div class="passwordWrapper">
+                            <label for="initialPassword">Senha</label>
+                            <input type="password" id="initialPassword" placeholder="********" required>
+                            <button type="button" id="togglePassword1">‿</button>
+
+                            <script>
+                                const toggleButton1 = document.getElementById("togglePassword1");
+                                const passwordFirstInput = document.getElementById("initialPassword");
+
+                                toggleButton1.addEventListener("click", () => {
+                                    if (passwordFirstInput.type === "password") {
+                                        passwordFirstInput.type = "text";
+                                        toggleButton1.textContent = "👁";
+                                    } else {
+                                        passwordFirstInput.type = "password";
+                                        toggleButton1.textContent = "‿";
+                                    }
+                                });
+                            </script>
+                        </div>
+
+                        <div class="passwordWrapper">
+                            <label for="confirmPassword">Confirme sua senha</label>
+                            <input type="password" id="confirmPassword" placeholder="********" required>
+                            <button type="button" id="togglePassword2">‿</button>
+
+                            <script>
+                                const toggleButton2 = document.getElementById("togglePassword2");
+                                const passwordSecondInput = document.getElementById("confirmPassword");
+
+                                toggleButton2.addEventListener("click", () => {
+                                    if (passwordSecondInput.type === "password") {
+                                        passwordSecondInput.type = "text";
+                                        toggleButton2.textContent = "👁";
+                                    } else {
+                                        passwordSecondInput.type = "password";
+                                        toggleButton2.textContent = "‿";
+                                    }
+                                });
+                            </script>
+                        </div>
+
+                        <p id="passwordErrorMessage" class="errorMessage">As senhas não coincidem!</p>
+
+                        <button type="submit" class="signinButton">Criar conta</button>
+
+                        <script>
+                            const signinForm = document.querySelector("form");
+                            const initialPasswordInput = document.getElementById("initialPassword");
+                            const confirmPasswordInput = document.getElementById("confirmPassword");
+                            const passwordErrorMessage = document.getElementById("passwordErrorMessage");
+                            const fullNameInput = document.getElementById("fullname");
+                            const emailInput = document.getElementById("email");
+
+                            function validatePasswords() {
+                                if (initialPasswordInput.value !== confirmPasswordInput.value) {
+                                    initialPasswordInput.classList.add('inputError');
+                                    confirmPasswordInput.classList.add('inputError');
+                                    passwordErrorMessage.style.display = 'block';
+                                    return false;
+                                } else {
+                                    initialPasswordInput.classList.remove('inputError');
+                                    confirmPasswordInput.classList.remove('inputError');
+                                    passwordErrorMessage.style.display = 'none';
+                                    return true;
+                                }
+                            }
+
+                            signinForm.addEventListener("submit", function(event) {
+                                if (!validatePasswords()) {
+                                    event.preventDefault();
+                                }
+                            });
+
+                            signinForm.addEventListener("submit", async function(event) {
+                            event.preventDefault();
+
+                            if (validatePasswords()) {
+                                const data = {
+                                    nomeCompleto: fullNameInput.value,
+                                    email: emailInput.value,
+                                    senha: initialPasswordInput.value
+                                };
+
+                                try {
+                                    const response = await fetch('/.netlify/functions/signin', { // Endpoint da sua API
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify(data),
+                                    });
+
+                                    const result = await response.json();
+
+                                    if (response.ok) {
+                                        alert(result.message);
+                                        window.location.href = 'login.html'; 
+                                    } else {
+                                        alert(`Erro: ${result.message}`);
+                                    }
+                                } catch (error) {
+                                    console.error('Erro de rede:', error);
+                                    alert('Não foi possível se conectar ao servidor. Tente novamente mais tarde.');
+                                }
+                            }
+                        });
+
+                            initialPasswordInput.addEventListener('input', validatePasswords);
+                            confirmPasswordInput.addEventListener('input', validatePasswords);
+                        </script>
+
+                    </form>
+
+                    <p class="registerText">Já tem uma conta? <a href="login.html">Entrar</a></p>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer da Pagina -->
+     
+    <footer>
+        <nav class="footerNav">
+            <div class="footerMenu">
+                <div class="footerMenu1-1">
+                    <div class="footerMenuTitle">
+                        <img src="img/building.png" alt="Building icon" id="footerMenuTitleImg1">
+                        <h2>Institucional</h2>
+                    </div>
+                </div>
+
+                <div class="footerMenu1-2">
+                    <a href="sobre_nos.html">Sobre nós</a>
+                    <a href="privacyPolicy.html">Política de privacidade</a>
+                    <a href="#">Fale conosco</a>
+                </div>
+            </div>
+
+            <div class="footerMenu">
+                <div class="footerMenu2-1">
+                    <div class="footerMenuTitle">
+                        <img src="img/white user icon.png" alt="User Icon" id="footerMenuTitleImg2">
+                        <h2>Minha Conta</h2>
+                    </div>
+                </div>
+            
+                <div class="footerMenu2-2">
+                    <a href="#">Entrar</a>
+                    <a href="#">Meu carrinho</a>
+                    <a href="#">Lista de desejos</a>
+                </div>
+            </div>
+            
+            <div class="footerMenu">
+                <div class="footerMenu3-1">
+                    <div class="footerMenuTitle">
+                        <img src="img/gps icon.png" alt="GPS icon" id="footerMenuTitleImg3">
+                        <h2>Localização</h2>
+                    </div>
+                    <a href="https://maps.app.goo.gl/2hcch8q6xvpVDhiv5" target="_blank">Rua Major Braga, 797 - Centro - Aguaí/SP.</a>
+                </div>
+
+                <div class="footerMenu3-2">
+                    <div class="footerMenuTitle">
+                        <h2>Redes Sociais:</h2>
+                    </div>
+
+                    <div class="footerMenu3-2Redirect">
+                        <img src="img/facebook.png" alt="Facebook" width="20px" height="20px">
+                        <a href="https://m.facebook.com/pastelariacentralaguai/" target="_blank">@pastelariacentral_aguai</a>
+                    </div>
+
+                    <div class="footerMenu3-2Redirect">
+                        <img src="img/instagram.png" alt="Instagram" width="20px" height="20px">
+                        <a href="https://www.instagram.com/pastelariacentral_aguai?igsh=eWk1OHA0MWZ1OWw4" target="_blank">@pastelariacentral_aguai</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="footerCopyright">
+            <p>© 2026 Pastelaria Central. Desenvolvido por <a href="sobre_nos.html">Central Corp.</a> - v5.0</p>
+        </div>
+    </footer>
+</body>
+</html>

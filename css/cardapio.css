@@ -1,0 +1,143 @@
+.pai {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    /* flex-wrap: wrap; */
+}
+
+
+
+/* Coluna Filtros */
+.filtros {
+  width: 220px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  height: 800px;
+}
+
+.filtros h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.filtro-grupo {
+  margin-bottom: 20px;
+}
+
+.filtro-grupo h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.filtro-grupo label {
+  display: block;
+  font-size: 14px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* CSS cards(+/- igual o do João) */
+/* main {
+    margin: 0;
+    width: 80%;
+} */
+
+.cardapioMenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.cardsMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+
+    /* background-color: black; */
+    width: auto;
+}
+
+.cardsMenuItem {
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    width: 190px;
+    height: 350px;
+    border-radius: 10px;
+    padding: 15px;
+    transition: 0.3s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cardsMenuItem:hover {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.cardsMenuItemContent1 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cardsMenuItemContent1Img {
+    background-color: white;
+    height: 200px;
+    border-bottom: 1px solid lightgray;
+}
+
+.cardsMenuItemContent1Img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.cardsMenuItemContentName {
+    color: black;
+    font-size: 20px;
+}
+
+.cardsMenuItemContent2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cardsMenuItemContent2Price {
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.cardsMenuItemContentButtom {
+    background-color: #561F15;
+    border-radius: 6px;
+    width: auto;
+    height: 35px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cardsMenuItemContentButtom p {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cardsMenuItemContentButtomIcon {
+    width: 22px;
+    height: 22px;
+}
