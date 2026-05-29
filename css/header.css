@@ -12,6 +12,7 @@
     background-color: #FFC72C;
     position: fixed;
     width: 100%;
+    z-index: 999;
 }
 
 .imageLogo {
@@ -84,6 +85,7 @@
     height: 40px;
     position: fixed;
     width: 100%;
+    z-index: 999;
 }
 
 .headerNav a {

@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="script/script.js" defer></script>
 </head>
 <body>
 
@@ -49,29 +51,46 @@
         <div class="mainPageContent"></div>
 
         <section class="mainCard">
-            <a class="mainCardBotao" href="#">
-                <img src="img/left-arrow.png" alt="Left Arrow icon">
-            </a>
-            
-            <h1>Anúncio</h1>
+            <div class="mainCardImagens">
+                <img class="mainCardImagensSlide" src="img/AnuncioPastelCaldoDeCana.png" alt="Anúncio 1">
+                <img class="mainCardImagensSlide" src="img/AnuncioHoraDoPastel.png" alt="Anúncio 2">
+            </div>
 
-            <a class="mainCardBotao" href="#">
-                <img src="img/right-arrow.png" alt="Right Arrow icon">
-            </a>
+            <button class="mainCardBotaoAnterior">◀</button>
+            <button class="mainCardBotaoProximo">▶</button>
         </section>
 
-        <h1 class="mainCardTitle">Combos com mais saída</h1>
+        <h1 class="mainCardTitle">Combo do momento!</h1>
 
-        <section class="mainCard">
-            <a class="mainCardBotao" href="#">
-                <img src="img/left-arrow.png" alt="Left Arrow icon">
-            </a>
-            
-            <h1>Anúncio</h1>
+        <section class="mainSecondCard">
+            <div class="mainSecondCardDiv1">
+                <img src="img/pastel e coca.jpeg" alt="Imagem do Combo em Destaque">
+            </div>
 
-            <a class="mainCardBotao" href="#">
-                <img src="img/right-arrow.png" alt="Right Arrow icon">
-            </a>
+            <div class="mainSecondCardDiv2">
+
+                <h1 class="mainSecondCardDiv2Title">Pastel de Queijo + Coca-Cola</h1>
+
+                <div class="mainSecondCardDiv2Information">
+
+                    <div class="mainSecondCardDiv2InformationPrice">
+                        <p class="mainSecondCardDiv2InformationPriceText">Por apenas:</p>
+                        <p class="mainSecondCardDiv2InformationPriceNumber">R$ 12,00</p>
+                    </div>
+
+                    <div class="mainSecondCardDiv2InformationItens">
+                        <p class="mainSecondCardDiv2InformationItensTitle">Incluso no Combo:</p>
+                        <p class="mainSecondCardDiv2InformationItensNumber">1x Pastel de Queijo</p>
+                        <p class="mainSecondCardDiv2InformationItensNumber">1x Coca-Cola 350ml</p>
+                    </div>
+
+                </div>
+
+                <div class="mainSecondCardDiv2Buttom">
+                    <p>Adicionar ao Carrinho</p>
+                </div>
+
+            </div>
         </section>
 
         <section class="cards">
@@ -344,7 +363,7 @@
         </nav>
         
         <div class="footerCopyright">
-            <p>© 2026 Pastelaria Central. Desenvolvido por <a href="sobre_nos.html">Central Corp.</a> - v5.0</p>
+            <p>© 2026 Pastelaria Central. Desenvolvido por <a href="sobre_nos.html">Central Corp.</a> - v6.0</p>
         </div>
     </footer>
 

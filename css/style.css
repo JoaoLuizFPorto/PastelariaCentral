@@ -20,7 +20,7 @@
 
 /* Anuncio */
 
-.mainCard {
+/* .mainCard {
     background-color: #D9D9D9;
     height: 400px;
     display: flex;
@@ -28,18 +28,21 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 15px;
-    /* gap: 460px; */
+    overflow: hidden;
+    position: relative;
 }
 
-.mainCardTitle {
-    font-size: 35px;
-    border-bottom: 2px solid #561F15;
-    color: black;
-    text-align: start;
-    padding: 5px;
+.mainCardImagens {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
 
-.mainCardBotao {
+.mainCardImagens img {
+  min-width: 100%;
+  object-fit: cover;
+} */
+
+/* .mainCardBotaoProximo, .mainCardBotaoAnterior {
     background-color: lightgray;
     width: 50px;
     height: 50px;
@@ -58,6 +61,160 @@
 .mainCardBotao img {
     width: 20px;
     height: 20px;
+} */
+
+.mainCard {
+    background-color: #D9D9D9;
+    height: 550px;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.mainCardImagens {
+    display: flex;
+    height: 100%; 
+    transition: transform 0.5s ease-in-out;
+}
+
+.mainCardImagensSlide {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Ajuste dos Botões --- */
+.mainCardBotaoAnterior, 
+.mainCardBotaoProximo {
+    position: absolute; /* Tira os botões do fluxo normal para flutuarem */
+    top: 50%; /* Desce os botões até a metade */
+    transform: translateY(-50%); /* Centraliza perfeitamente no eixo Y */
+    background-color: rgba(255, 255, 255, 0.7); /* Fundo levemente transparente */
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%; /* Deixa o botão arredondado (opcional) */
+    z-index: 10; /* Garante que os botões fiquem acima das imagens */
+    transition: background-color 0.2s;
+}
+
+.mainCardBotaoAnterior:hover, 
+.mainCardBotaoProximo:hover {
+    background-color: rgba(255, 255, 255, 1); /* Fica opaco ao passar o mouse */
+}
+
+.mainCardBotaoAnterior {
+    left: 20px;
+}
+
+.mainCardBotaoProximo {
+    right: 20px;
+}
+
+.mainCardTitle {
+    font-size: 35px;
+    border-bottom: 2px solid #561F15;
+    color: black;
+    text-align: start;
+    padding: 5px;
+}
+
+.mainCardTitle {
+    font-size: 35px;
+    border-bottom: 2px solid #561F15;
+    color: black;
+    text-align: start;
+    padding: 5px;
+}
+
+/* Combo do Momento! */
+
+.mainSecondCard {
+    background-color: #D9D9D9;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 15px;
+    gap: 60px;
+}
+
+.mainSecondCardDiv1 {
+    height: 330px;
+    margin-left: 60px;
+}
+
+.mainSecondCardDiv1 img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.mainSecondCardDiv2 {
+    height: 330px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    gap: 60px;
+    /* background-color: lightblue; */
+}
+
+.mainSecondCardDiv2Title {
+    font-size: 45px;
+}
+
+.mainSecondCardDiv2Information {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 160px;
+}
+
+.mainSecondCardDiv2InformationPriceText {
+    font-size: 18px;
+}
+
+.mainSecondCardDiv2InformationPriceNumber {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.mainSecondCardDiv2InformationItensTitle {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.mainSecondCardDiv2InformationItensNumber {
+    font-size: 20px;
+}
+
+.mainSecondCardDiv2Buttom {
+    background-color: #1CD437;
+    width: 600px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.mainSecondCardDiv2Buttom p {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.mainSecondCardDiv2Buttom:hover {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
 }
 
 /* Cards */
@@ -142,6 +299,12 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.cardsMenuItemContentButtom:hover {
+    height: 40px;
+    transition: 0.3s;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
 .cardsMenuItemContentButtom p {
